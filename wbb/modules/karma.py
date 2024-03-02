@@ -51,16 +51,15 @@ regex_downvote = r"^(-+|-1|not cool|disagree|worst|bad|👎|-+ .+)$"
 
 __MODULE__ = "Downloader"
 __HELP__ = """
- /dl or /download [link]
-     Download content from Instagram/Tiktok/Twitter social media
+/dl or /download [link]
+     Download content from Instagram/Tiktok/Twitter social media.
 
-
- /yt or /youtube [title] or [link]
+/yt or /youtube [title] or [link]
      Download content from YouTube.
 
 /image [query] 
      Generated Image.
- """
+"""
 
 def get_text(message):
     reply_text = (
