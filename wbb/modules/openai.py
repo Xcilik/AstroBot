@@ -76,4 +76,4 @@ async def curie(client, message):
             await message.reply_photo(photo=img_bytes)
             await cilik.delete()
         except Exception as e:
-            await cilik.edit(f"{e}"
+            await cilik.edit(f"{e}")
