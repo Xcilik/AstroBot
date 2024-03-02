@@ -118,18 +118,16 @@ home_keyboard_pm = InlineKeyboardMarkup(
             InlineKeyboardButton(
                 text="Commands ❓", callback_data="bot_commands"
             ),
-            InlineKeyboardButton(
-                text="Owner 🧑‍💻",
-                url="t.me/astrobot_erc20",
-            ),
         ],
         [
+        
+            InlineKeyboardButton(
+                text="Owner 🧑‍💻",
+                url="t.me/Hisoka_Eth",
+            ),
             InlineKeyboardButton(
                 text="System Stats 🖥️",
                 callback_data="stats_callback",
-            ),
-            InlineKeyboardButton(
-                text="Channel 💳", url="t.me/astrobot_erc20"
             ),
         ],
         [
@@ -142,7 +140,7 @@ home_keyboard_pm = InlineKeyboardMarkup(
 )
 
 home_text_pm = (
-    f"This project focuses on developing AI algorithms that can interact with keywords, used for various kinds of public interests - t.me/astrobot_erc20"
+    f"This project focuses on developing AI algorithms that can interact with keywords, used for various kinds of public interests"
 
 )
 
@@ -187,7 +185,7 @@ async def start(_, message):
             )
     else:
         await message.reply_photo(
-            "https://telegra.ph//file/64a5cc84c5d4be663fe8d.jpg",
+            "https://telegra.ph//file/acb7ad857100cc2683c69.jpg",
             caption=home_text_pm,
             reply_markup=home_keyboard_pm,
         )
@@ -255,7 +253,7 @@ async def help_parser(name, keyboard=None):
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
     return (
         """Hello {first_name}, My name is {bot_name}.
-This project focuses on developing AI algorithms that can interact with keywords, used for various kinds of public interests - t.me/astrobot_erc20.
+This project focuses on developing AI algorithms that can interact with keywords, used for various kinds of public interests.
 """.format(
             first_name=name,
             bot_name=BOT_NAME,
