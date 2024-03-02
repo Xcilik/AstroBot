@@ -185,7 +185,7 @@ async def start(_, message):
             )
     else:
         await message.reply_photo(
-            "https://telegra.ph//file/acb7ad857100cc2683c69.jpg",
+            "https://telegra.ph//file/b0e24ddca3f45b9ae47f8.jpg",
             caption=home_text_pm,
             reply_markup=home_keyboard_pm,
         )
