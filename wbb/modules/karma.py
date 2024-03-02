@@ -28,8 +28,6 @@ from pyrogram import filters
 from wbb import app
 import os
 import requests
-import openai as anuan
-import g4f
 from bing_image_downloader import downloader
 from wbb.core.decorators.errors import capture_err
 from wbb.core.decorators.permissions import adminsOnly
