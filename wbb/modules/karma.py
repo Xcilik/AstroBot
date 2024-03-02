@@ -48,30 +48,20 @@ from sample_config import OPENAI_APIKEY
 from wbb.utils.filter_groups import karma_negative_group, karma_positive_group
 from wbb.utils.functions import get_user_id_and_usernames
 
-__MODULE__ = "OpenAI"
-__HELP__ = """
-/ai [question] - Generated text / ChatGpt
-/dalle [text] - Generated Image
-"""
-
 regex_upvote = r"^(\++|\+1|thx|tnx|tq|ty|thankyou|thank you|thanx|thanks|pro|cool|good|agree|👍|\++ .+)$"
 regex_downvote = r"^(-+|-1|not cool|disagree|worst|bad|👎|-+ .+)$"
 
+MODULE = "Downloader"
+HELP = """
+ /dl or /download [link]
 
-async def ChatGPT(question):
-    try:
-        response = await g4f.ChatCompletion.create_async(
-            model=g4f.models.default,
-            provider=g4f.Provider.GeekGpt,
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": question},
-            ],
-            timeout=60,
-        )
-        return response if response else "lagi error coba lagi nanti"
-    except Exception as error:
-        return str(error)
+     Download content from Instagram/Tiktok/Twitter social media
+
+
+ /yt or /youtube [title] or [link]
+
+     Download content from YouTube.
+ """
 
 def get_text(message):
     reply_text = (
@@ -86,28 +76,7 @@ def get_text(message):
         else reply_text + user_text
     )
 
-@app.on_message(
-    filters.command("ai")
-)
-async def openai(_, message):
-    args = get_text(message)
-    if not args:
-        return await message.reply("<b>What???</b>")    
-    Tm = await message.reply("<code>Generated Text...</code>")        
-    try:
-        response = await ChatGPT(args)
-        if len(response) > 4096:
-            with io.BytesIO(response.encode()) as out_file:
-                out_file.name = "openAi.txt"
-                await message.reply_document(document=out_file)
-        else:
-            msg = message.reply_to_message or message
-            await app.send_message(
-                message.chat.id, response, reply_to_message_id=msg.id
-            )
-    except Exception as error:
-        await message.reply(str(error))
-    await Tm.delete()
+
 
 
 @app.on_message(
@@ -144,34 +113,7 @@ async def iamges(_, message):
         except Exception as e:
             await cilik.edit(f"{e}")
             
-@app.on_message(
-    filters.command("dalle")
-)
-async def curie(_, message):
-    msg = (
-        message.text.split(None, 1)[1]
-        if len(
-            message.command,
-        )
-        != 1
-        else None
-    )
-    if not msg:
-        await message.reply("<b>What image to manipulated?</b>")
-    else:
-        cilik = await message.reply("<code>Manipulated image...</code>")
-        try:            
-            anuan.api_key = OPENAI_APIKEY
-            response = anuan.Image.create(
-            prompt=msg,
-            n=1,
-            size="1024x1024"
-            )
-            image_url = response['data'][0]['url']
-            await app.send_photo(message.chat.id, photo=image_url)
-            await cilik.delete()
-        except Exception as e:
-            await cilik.edit(f"{e}")
+
             
 @app.on_message(
     filters.text
