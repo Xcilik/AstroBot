@@ -29,12 +29,7 @@ from pyrogram.types import Message
 from wbb import BOT_ID, SUDOERS, USERBOT_ID, app, app2
 from wbb.core.decorators.errors import capture_err
 
-__MODULE__ = "Downloader"
-__HELP__ = """
-/dl or /download [link] - download social media videos.
 
-Instagram/tiktok/Twitter
-"""
 pipes_list_bot = {}
 pipes_list_userbot = {}
 
