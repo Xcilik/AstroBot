@@ -31,7 +31,7 @@ from gpytranslate import Translator
 
 __MODULE__ = "Translator"
 __HELP__ = f"""
-/tr [lang_code - reply/text]
+/tr [lang_code - reply]
      To translate text.
 
 /tts [lang_code - reply/text]
