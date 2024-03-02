@@ -81,32 +81,3 @@ async def _(_, message):
         pass
 
 
-@app.on_message(filters.command("tr"))
-async def _(client, message):
-    trans = Translator()
-    if message.reply_to_message:
-        if len(message.command) < 2:
-            dest = "id"
-            to_translate = (
-                message.reply_to_message.text or message.reply_to_message.caption
-            )
-            source = await trans.detect(to_translate)
-        else:
-            dest = message.text.split(None, 2)[1]
-            to_translate = (
-                message.reply_to_message.text or message.reply_to_message.caption
-            )
-            source = await trans.detect(to_translate)
-    else:
-        if len(message.command) < 3:
-            return
-        else:
-            dest = message.text.split(None, 2)[1]
-            to_translate = message.text.split(None, 2)[2]
-            source = await trans.detect(to_translate)
-    translation = await trans(to_translate, sourcelang=source, targetlang=dest)
-    reply = f"<b>Translated\n    Language:</b> <code>{source}</code> to <code>{dest}</code>\n    <code>{translation.text}</code>"
-    reply_me_or_user = message.reply_to_message or message
-    await client.send_message(
-        message.chat.id, reply, reply_to_message_id=reply_me_or_user.id
-            )
