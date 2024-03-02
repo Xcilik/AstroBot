@@ -253,6 +253,7 @@ async def help_parser(name, keyboard=None):
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
     return (
         """Hello {first_name}, My name is {bot_name}.
+        
 This project focuses on developing AI algorithms that can interact with keywords, used for various kinds of public interests.
 """.format(
             first_name=name,
